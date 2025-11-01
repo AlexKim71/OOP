@@ -20,6 +20,30 @@
      public abstract String getInfo();
      ```
 
+**Рішення:**
+
+```java
+abstract class Product {
+    protected String name;
+    protected double price;
+    
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public double getPrice() {
+        return price;
+    }
+    
+    public abstract String getInfo();
+}
+```
+
 2. Створіть клас `Pizza`, який наслідує `Product`.
 
    Додатково:
@@ -35,6 +59,24 @@
        // "Pizza Margherita (Large) - 189.0 UAH"
    }
    ```
+
+**Рішення:**
+
+```java
+class Pizza extends Product {
+    private String size;
+    
+    public Pizza(String name, double price, String size) {
+        super(name, price);
+        this.size = size;
+    }
+    
+    @Override
+    public String getInfo() {
+        return "Pizza " + name + " (" + size + ") - " + price + " UAH";
+    }
+}
+```
 
 3. Створіть клас `Drink`, який наслідує `Product`.
 
@@ -52,6 +94,25 @@
        // "Tea [hot] - 30.0 UAH"
    }
    ```
+
+**Рішення:**
+
+```java
+class Drink extends Product {
+    private boolean isCold;
+    
+    public Drink(String name, double price, boolean isCold) {
+        super(name, price);
+        this.isCold = isCold;
+    }
+    
+    @Override
+    public String getInfo() {
+        String temperature = isCold ? "cold" : "hot";
+        return name + " [" + temperature + "] - " + price + " UAH";
+    }
+}
+```
 
 Після цього пункту у вас має бути ієрархія:
 `Product` ← `Pizza`, `Drink`.
@@ -82,6 +143,53 @@
    ```java
    newPrice = price - (price * percent / 100.0);
    ```
+
+**Рішення:**
+
+```java
+interface Discountable {
+    double applyDiscount(double percent);
+}
+
+class Pizza extends Product implements Discountable {
+    private String size;
+    
+    public Pizza(String name, double price, String size) {
+        super(name, price);
+        this.size = size;
+    }
+    
+    @Override
+    public String getInfo() {
+        return "Pizza " + name + " (" + size + ") - " + price + " UAH";
+    }
+    
+    @Override
+    public double applyDiscount(double percent) {
+        return price - (price * percent / 100.0);
+    }
+}
+
+class Drink extends Product implements Discountable {
+    private boolean isCold;
+    
+    public Drink(String name, double price, boolean isCold) {
+        super(name, price);
+        this.isCold = isCold;
+    }
+    
+    @Override
+    public String getInfo() {
+        String temperature = isCold ? "cold" : "hot";
+        return name + " [" + temperature + "] - " + price + " UAH";
+    }
+    
+    @Override
+    public double applyDiscount(double percent) {
+        return price - (price * percent / 100.0);
+    }
+}
+```
 
 ---
 
@@ -152,6 +260,42 @@
    * `Function<T,String>` — це стандартний функціональний інтерфейс з одним методом `apply(T value)`, який повертає рядок.
    * Тобто ми дозволяємо "налаштувати", як саме виводити елемент.
 
+**Рішення:**
+
+```java
+class Cart<T> {
+    private T[] items;
+    private int count;
+    
+    public Cart() {
+        items = (T[]) new Object[10];
+        count = 0;
+    }
+    
+    public void addItem(T item) {
+        if (count < items.length) {
+            items[count] = item;
+            count++;
+        }
+    }
+    
+    public int getCount() {
+        return count;
+    }
+    
+    public String printCart(java.util.function.Function<T, String> formatter) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            result.append(formatter.apply(items[i]));
+            if (i < count - 1) {
+                result.append("\n");
+            }
+        }
+        return result.toString();
+    }
+}
+```
+
 ---
 
 ### Завдання 4. Перевірка роботи (main)
@@ -216,5 +360,48 @@
    System.out.println("Pizza count = " + pizzaCart.getCount());
    System.out.println("Drink count = " + drinkCart.getCount());
    ```
+
+**Рішення:**
+
+```java
+class Main {
+    public static void main(String[] args) {
+        Pizza p1 = new Pizza("Margherita", 189.0, "Large");
+        Pizza p2 = new Pizza("Pepperoni", 210.0, "Medium");
+        
+        Drink d1 = new Drink("Cola", 45.0, true);
+        Drink d2 = new Drink("Tea", 30.0, false);
+        
+        double newPrice = p1.applyDiscount(10);
+        System.out.println("Price after discount: " + newPrice);
+        
+        Cart<Pizza> pizzaCart = new Cart<>();
+        Cart<Drink> drinkCart = new Cart<>();
+        
+        pizzaCart.addItem(p1);
+        pizzaCart.addItem(p2);
+        
+        drinkCart.addItem(d1);
+        drinkCart.addItem(d2);
+        
+        String pizzasText = pizzaCart.printCart(
+            item -> item.getInfo()
+        );
+        
+        String drinksText = drinkCart.printCart(
+            drink -> "Drink: " + drink.getInfo()
+        );
+        
+        System.out.println("=== Pizza cart ===");
+        System.out.println(pizzasText);
+        
+        System.out.println("=== Drink cart ===");
+        System.out.println(drinksText);
+        
+        System.out.println("Pizza count = " + pizzaCart.getCount());
+        System.out.println("Drink count = " + drinkCart.getCount());
+    }
+}
+```
 
 ---
