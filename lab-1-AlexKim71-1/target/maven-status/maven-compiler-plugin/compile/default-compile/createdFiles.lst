@@ -1,0 +1,15 @@
+ua\opnu\labwork21\entity\Booking.class
+ua\opnu\labwork21\controller\GuestController.class
+ua\opnu\labwork21\entity\Room.class
+ua\opnu\labwork21\controller\AmenityController.class
+ua\opnu\labwork21\controller\ActuatorController.class
+ua\opnu\labwork21\entity\Guest.class
+ua\opnu\labwork21\controller\SearchController.class
+ua\opnu\labwork21\entity\Amenity.class
+ua\opnu\labwork21\Labwork21Application.class
+ua\opnu\labwork21\controller\RoomController.class
+ua\opnu\labwork21\entity\BookingStatus.class
+ua\opnu\labwork21\controller\BookingController.class
+ua\opnu\labwork21\controller\AnalyticsController.class
+ua\opnu\labwork21\controller\HotelController.class
+ua\opnu\labwork21\entity\Hotel.class

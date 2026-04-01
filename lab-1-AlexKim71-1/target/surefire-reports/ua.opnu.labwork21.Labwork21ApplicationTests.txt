@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ua.opnu.labwork21.Labwork21ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.936 s -- in ua.opnu.labwork21.Labwork21ApplicationTests

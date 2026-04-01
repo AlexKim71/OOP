@@ -1,0 +1,96 @@
+{
+  "info": {
+    "name": "lab1-variant6-hotel-booking",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Hotels",
+      "item": [
+        {"name": "POST /hotels", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/hotels", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"name\": \"Grand Palace\",\n  \"city\": \"Odesa\",\n  \"address\": \"Shevchenka Ave, 1\",\n  \"rating\": 5\n}"}}},
+        {"name": "GET /hotels", "request": {"method": "GET", "url": "{{baseUrl}}/hotels"}},
+        {"name": "GET /hotels/{id}", "request": {"method": "GET", "url": "{{baseUrl}}/hotels/1"}},
+        {"name": "PUT /hotels/{id}", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/hotels/1", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"name\": \"Updated Hotel\",\n  \"city\": \"Kyiv\",\n  \"address\": \"Khreshchatyk, 5\",\n  \"rating\": 4\n}"}}},
+        {"name": "DELETE /hotels/{id}", "request": {"method": "DELETE", "url": "{{baseUrl}}/hotels/1"}},
+        {"name": "GET /hotels/{id}/rooms", "request": {"method": "GET", "url": "{{baseUrl}}/hotels/1/rooms"}}
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {"name": "POST /rooms", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/rooms", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"number\": \"101\",\n  \"type\": \"STANDARD\",\n  \"pricePerNight\": 120.0,\n  \"capacity\": 2\n}"}}},
+        {"name": "GET /rooms", "request": {"method": "GET", "url": "{{baseUrl}}/rooms"}},
+        {"name": "GET /rooms/{id}", "request": {"method": "GET", "url": "{{baseUrl}}/rooms/1"}},
+        {"name": "PUT /rooms/{id}", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/rooms/1", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"number\": \"305\",\n  \"type\": \"SUITE\",\n  \"pricePerNight\": 300.0,\n  \"capacity\": 4\n}"}}},
+        {"name": "DELETE /rooms/{id}", "request": {"method": "DELETE", "url": "{{baseUrl}}/rooms/1"}},
+        {"name": "GET /rooms/hotel/{hotelId}", "request": {"method": "GET", "url": "{{baseUrl}}/rooms/hotel/1"}}
+      ]
+    },
+    {
+      "name": "Guests",
+      "item": [
+        {"name": "POST /guests", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/guests", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"firstName\": \"Ivan\",\n  \"lastName\": \"Petrenko\",\n  \"email\": \"ivan@example.com\",\n  \"phone\": \"+380500000001\"\n}"}}},
+        {"name": "GET /guests", "request": {"method": "GET", "url": "{{baseUrl}}/guests"}},
+        {"name": "GET /guests/{id}", "request": {"method": "GET", "url": "{{baseUrl}}/guests/1"}},
+        {"name": "PUT /guests/{id}", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/guests/1", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"firstName\": \"Updated\",\n  \"lastName\": \"Guest\",\n  \"email\": \"updated@example.com\",\n  \"phone\": \"+380500000003\"\n}"}}},
+        {"name": "DELETE /guests/{id}", "request": {"method": "DELETE", "url": "{{baseUrl}}/guests/1"}},
+        {"name": "GET /guests/{id}/bookings", "request": {"method": "GET", "url": "{{baseUrl}}/guests/1/bookings"}}
+      ]
+    },
+    {
+      "name": "Bookings",
+      "item": [
+        {"name": "POST /bookings", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/bookings", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"checkInDate\": \"2026-04-01\",\n  \"checkOutDate\": \"2026-04-03\",\n  \"status\": \"NEW\"\n}"}}},
+        {"name": "GET /bookings", "request": {"method": "GET", "url": "{{baseUrl}}/bookings"}},
+        {"name": "GET /bookings/{id}", "request": {"method": "GET", "url": "{{baseUrl}}/bookings/1"}},
+        {"name": "PUT /bookings/{id}", "request": {"method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/bookings/1", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"checkInDate\": \"2026-04-02\",\n  \"checkOutDate\": \"2026-04-05\",\n  \"status\": \"ACTIVE\"\n}"}}},
+        {"name": "DELETE /bookings/{id}", "request": {"method": "DELETE", "url": "{{baseUrl}}/bookings/1"}},
+        {"name": "GET /bookings/active", "request": {"method": "GET", "url": "{{baseUrl}}/bookings/active"}}
+      ]
+    },
+    {
+      "name": "Amenities",
+      "item": [
+        {"name": "POST /amenities", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "url": "{{baseUrl}}/amenities", "body": {"mode": "raw", "raw": "{\n  \"id\": 1,\n  \"name\": \"Wi-Fi\",\n  \"description\": \"Free high-speed internet\"\n}"}}},
+        {"name": "GET /amenities", "request": {"method": "GET", "url": "{{baseUrl}}/amenities"}},
+        {"name": "GET /amenities/{id}", "request": {"method": "GET", "url": "{{baseUrl}}/amenities/1"}},
+        {"name": "DELETE /amenities/{id}", "request": {"method": "DELETE", "url": "{{baseUrl}}/amenities/1"}},
+        {"name": "POST /rooms/{id}/amenities/{amenityId}", "request": {"method": "POST", "url": "{{baseUrl}}/rooms/1/amenities/1"}},
+        {"name": "DELETE /rooms/{id}/amenities/{amenityId}", "request": {"method": "DELETE", "url": "{{baseUrl}}/rooms/1/amenities/1"}}
+      ]
+    },
+    {
+      "name": "Search",
+      "item": [
+        {"name": "GET /search/hotels", "request": {"method": "GET", "url": "{{baseUrl}}/search/hotels?query=palace"}},
+        {"name": "GET /search/rooms", "request": {"method": "GET", "url": "{{baseUrl}}/search/rooms?query=deluxe"}},
+        {"name": "GET /search/guests", "request": {"method": "GET", "url": "{{baseUrl}}/search/guests?query=ivan"}}
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {"name": "GET /analytics/hotels/count", "request": {"method": "GET", "url": "{{baseUrl}}/analytics/hotels/count"}},
+        {"name": "GET /analytics/rooms/count", "request": {"method": "GET", "url": "{{baseUrl}}/analytics/rooms/count"}},
+        {"name": "GET /analytics/bookings/active", "request": {"method": "GET", "url": "{{baseUrl}}/analytics/bookings/active"}},
+        {"name": "GET /analytics/bookings/completed", "request": {"method": "GET", "url": "{{baseUrl}}/analytics/bookings/completed"}},
+        {"name": "GET /analytics/rooms/by-type", "request": {"method": "GET", "url": "{{baseUrl}}/analytics/rooms/by-type"}}
+      ]
+    },
+    {
+      "name": "Actuator",
+      "item": [
+        {"name": "GET /actuator/health", "request": {"method": "GET", "url": "{{baseUrl}}/actuator/health"}},
+        {"name": "GET /actuator/info", "request": {"method": "GET", "url": "{{baseUrl}}/actuator/info"}},
+        {"name": "GET /actuator/metrics", "request": {"method": "GET", "url": "{{baseUrl}}/actuator/metrics"}}
+      ]
+    }
+  ]
+}
+
