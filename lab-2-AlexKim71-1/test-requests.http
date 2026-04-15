@@ -1,0 +1,233 @@
+### API Test Requests / Тестові запити API
+### Save as test.http and use in VS Code REST Client extension
+
+### ============================================
+### HOTELS / ГОТЕЛІ
+### ============================================
+
+### Create Hotel / Створити готель
+POST http://localhost:8080/hotels
+Content-Type: application/json
+
+{
+  "name": "Test Hotel 1",
+  "city": "Kyiv",
+  "address": "123 Test Street, Kyiv",
+  "rating": 5
+}
+
+### Get All Hotels / Отримати всі готелі
+GET http://localhost:8080/hotels
+
+### Get Hotel by ID / Отримати готель за ID
+GET http://localhost:8080/hotels/1
+
+### Update Hotel / Оновити готель
+PUT http://localhost:8080/hotels/1
+Content-Type: application/json
+
+{
+  "name": "Updated Test Hotel",
+  "city": "Kyiv",
+  "address": "456 New Street, Kyiv",
+  "rating": 4
+}
+
+### Delete Hotel / Видалити готель
+DELETE http://localhost:8080/hotels/1
+
+### ============================================
+### ROOMS / НОМЕРИ
+### ============================================
+
+### Create Room / Створити номер
+POST http://localhost:8080/rooms
+Content-Type: application/json
+
+{
+  "number": "101",
+  "type": "Deluxe",
+  "pricePerNight": 150.0,
+  "capacity": 2,
+  "hotelId": 1
+}
+
+### Get All Rooms / Отримати всі номери
+GET http://localhost:8080/rooms
+
+### Get Room by ID / Отримати номер за ID
+GET http://localhost:8080/rooms/1
+
+### Get Rooms by Hotel / Отримати номери готелю
+GET http://localhost:8080/rooms/hotel/1
+
+### Update Room / Оновити номер
+PUT http://localhost:8080/rooms/1
+Content-Type: application/json
+
+{
+  "number": "101",
+  "type": "Deluxe Suite",
+  "pricePerNight": 200.0,
+  "capacity": 4,
+  "hotelId": 1
+}
+
+### Delete Room / Видалити номер
+DELETE http://localhost:8080/rooms/1
+
+### ============================================
+### GUESTS / ГОСТІ
+### ============================================
+
+### Register Guest / Зареєструвати гостя
+POST http://localhost:8080/guests
+Content-Type: application/json
+
+{
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "email": "ivan@example.com",
+  "phone": "+380501234567"
+}
+
+### Get All Guests / Отримати всіх гостей
+GET http://localhost:8080/guests
+
+### Get Guest by ID / Отримати гостя за ID
+GET http://localhost:8080/guests/1
+
+### Get Guest Bookings / Отримати бронювання гостя
+GET http://localhost:8080/guests/1/bookings
+
+### Update Guest / Оновити гостя
+PUT http://localhost:8080/guests/1
+Content-Type: application/json
+
+{
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "email": "ivan.new@example.com",
+  "phone": "+380501234568"
+}
+
+### Delete Guest / Видалити гостя
+DELETE http://localhost:8080/guests/1
+
+### ============================================
+### BOOKINGS / БРОНЮВАННЯ
+### ============================================
+
+### Create Booking / Створити бронювання
+POST http://localhost:8080/bookings
+Content-Type: application/json
+
+{
+  "checkInDate": "2024-05-01",
+  "checkOutDate": "2024-05-05",
+  "status": "ACTIVE",
+  "roomId": 1,
+  "guestId": 1
+}
+
+### Get All Bookings / Отримати всі бронювання
+GET http://localhost:8080/bookings
+
+### Get Booking by ID / Отримати бронювання за ID
+GET http://localhost:8080/bookings/1
+
+### Get Active Bookings / Отримати активні бронювання
+GET http://localhost:8080/bookings/active
+
+### Update Booking / Оновити бронювання
+PUT http://localhost:8080/bookings/1
+Content-Type: application/json
+
+{
+  "checkInDate": "2024-05-01",
+  "checkOutDate": "2024-05-07",
+  "status": "ACTIVE",
+  "roomId": 1,
+  "guestId": 1
+}
+
+### Cancel Booking / Скасувати бронювання
+DELETE http://localhost:8080/bookings/1
+
+### ============================================
+### AMENITIES / ЗРУЧНОСТІ
+### ============================================
+
+### Create Amenity / Створити зручність
+POST http://localhost:8080/amenities
+Content-Type: application/json
+
+{
+  "name": "WiFi",
+  "description": "High-speed wireless internet connection",
+  "hotelId": 1
+}
+
+### Get All Amenities / Отримати всі зручності
+GET http://localhost:8080/amenities
+
+### Get Amenity by ID / Отримати зручність за ID
+GET http://localhost:8080/amenities/1
+
+### Add Amenity to Room / Додати зручність до номера
+POST http://localhost:8080/amenities/rooms/1/amenities/1
+
+### Remove Amenity from Room / Видалити зручність з номера
+DELETE http://localhost:8080/amenities/rooms/1/amenities/1
+
+### Delete Amenity / Видалити зручність
+DELETE http://localhost:8080/amenities/1
+
+### ============================================
+### SEARCH / ПОШУК
+### ============================================
+
+### Search Hotels / Пошук готелів
+GET http://localhost:8080/search/hotels?query=kyiv
+
+### Search Rooms / Пошук номерів
+GET http://localhost:8080/search/rooms?query=deluxe
+
+### Search Guests / Пошук гостей
+GET http://localhost:8080/search/guests?query=ivan
+
+### ============================================
+### ANALYTICS / АНАЛІТИКА
+### ============================================
+
+### Get Hotels Count / Отримати кількість готелів
+GET http://localhost:8080/analytics/hotels/count
+
+### Get Rooms Count / Отримати кількість номерів
+GET http://localhost:8080/analytics/rooms/count
+
+### Get Active Bookings / Отримати активні бронювання
+GET http://localhost:8080/analytics/bookings/active
+
+### Get Completed Bookings / Отримати завершені бронювання
+GET http://localhost:8080/analytics/bookings/completed
+
+### Get Rooms by Type / Отримати номери за типом
+GET http://localhost:8080/analytics/rooms/by-type
+
+### Get All Analytics / Отримати всю аналітику
+GET http://localhost:8080/analytics/all
+
+### ============================================
+### HEALTH & METRICS / ЗДОРОВ'Я ТА МЕТРИКИ
+### ============================================
+
+### Check Service Health / Перевірити стан сервісу
+GET http://localhost:8080/actuator/health
+
+### Get Metrics / Отримати метрики
+GET http://localhost:8080/actuator/metrics
+
+### Get Prometheus Metrics / Отримати Prometheus метрики
+GET http://localhost:8080/actuator/prometheus
+

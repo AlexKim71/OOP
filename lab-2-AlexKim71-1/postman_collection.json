@@ -1,0 +1,725 @@
+{
+  "info": {
+    "_postman_id": "lab1-ai-241-ivanov",
+    "name": "Hotel Management System API - ЛР2",
+    "description": "REST API для системи управління бронюванням готелів\nREST API for hotel booking management system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "123456"
+  },
+  "item": [
+    {
+      "name": "Hotels - Готелі",
+      "item": [
+        {
+          "name": "Create Hotel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Grand Hotel\",\n  \"city\": \"Kyiv\",\n  \"address\": \"123 Main St, Kyiv\",\n  \"rating\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/hotels",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["hotels"]
+            }
+          }
+        },
+        {
+          "name": "Get All Hotels",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/hotels",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["hotels"]
+            }
+          }
+        },
+        {
+          "name": "Get Hotel by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/hotels/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["hotels", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Hotel",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Grand Hotel Updated\",\n  \"city\": \"Kyiv\",\n  \"address\": \"123 Main St, Kyiv\",\n  \"rating\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/hotels/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["hotels", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Hotel",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/hotels/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["hotels", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms - Номери",
+      "item": [
+        {
+          "name": "Create Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"101\",\n  \"type\": \"Deluxe\",\n  \"pricePerNight\": 150.0,\n  \"capacity\": 2,\n  \"hotelId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/rooms",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms"]
+            }
+          }
+        },
+        {
+          "name": "Get All Rooms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/rooms",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms"]
+            }
+          }
+        },
+        {
+          "name": "Get Room by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/rooms/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Rooms by Hotel",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/rooms/hotel/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms", "hotel", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Room",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"number\": \"101\",\n  \"type\": \"Deluxe Suite\",\n  \"pricePerNight\": 200.0,\n  \"capacity\": 4,\n  \"hotelId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/rooms/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Room",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/rooms/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["rooms", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Guests - Гості",
+      "item": [
+        {
+          "name": "Register Guest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ivan\",\n  \"lastName\": \"Ivanov\",\n  \"email\": \"ivan@example.com\",\n  \"phone\": \"+380501234567\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/guests",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests"]
+            }
+          }
+        },
+        {
+          "name": "Get All Guests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/guests",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests"]
+            }
+          }
+        },
+        {
+          "name": "Get Guest by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/guests/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Guest Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/guests/1/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests", "1", "bookings"]
+            }
+          }
+        },
+        {
+          "name": "Update Guest",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ivan\",\n  \"lastName\": \"Ivanov\",\n  \"email\": \"ivan.new@example.com\",\n  \"phone\": \"+380501234568\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/guests/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Guest",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/guests/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["guests", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings - Бронювання",
+      "item": [
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"checkInDate\": \"2024-05-01\",\n  \"checkOutDate\": \"2024-05-05\",\n  \"status\": \"ACTIVE\",\n  \"roomId\": 1,\n  \"guestId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get All Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bookings",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings"]
+            }
+          }
+        },
+        {
+          "name": "Get Booking by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bookings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bookings/active",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "active"]
+            }
+          }
+        },
+        {
+          "name": "Update Booking",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"checkInDate\": \"2024-05-01\",\n  \"checkOutDate\": \"2024-05-07\",\n  \"status\": \"ACTIVE\",\n  \"roomId\": 1,\n  \"guestId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/bookings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "1"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/bookings/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["bookings", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Amenities - Зручності",
+      "item": [
+        {
+          "name": "Create Amenity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"WiFi\",\n  \"description\": \"High-speed wireless internet\",\n  \"hotelId\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/amenities",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities"]
+            }
+          }
+        },
+        {
+          "name": "Get All Amenities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/amenities",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities"]
+            }
+          }
+        },
+        {
+          "name": "Get Amenity by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/amenities/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add Amenity to Room",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/amenities/rooms/1/amenities/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities", "rooms", "1", "amenities", "1"]
+            }
+          }
+        },
+        {
+          "name": "Remove Amenity from Room",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/amenities/rooms/1/amenities/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities", "rooms", "1", "amenities", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Amenity",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/amenities/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["amenities", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search - Пошук",
+      "item": [
+        {
+          "name": "Search Hotels",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/search/hotels?query=kyiv",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["search", "hotels"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "kyiv"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Rooms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/search/rooms?query=deluxe",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["search", "rooms"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "deluxe"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Guests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/search/guests?query=ivan",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["search", "guests"],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "ivan"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics - Аналітика",
+      "item": [
+        {
+          "name": "Get Hotels Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/hotels/count",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "hotels", "count"]
+            }
+          }
+        },
+        {
+          "name": "Get Rooms Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/rooms/count",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "rooms", "count"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Bookings Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/bookings/active",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "bookings", "active"]
+            }
+          }
+        },
+        {
+          "name": "Get Completed Bookings Count",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/bookings/completed",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "bookings", "completed"]
+            }
+          }
+        },
+        {
+          "name": "Get Rooms by Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/rooms/by-type",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "rooms", "by-type"]
+            }
+          }
+        },
+        {
+          "name": "Get All Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/analytics/all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["analytics", "all"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health & Metrics - Здоров'я та метрики",
+      "item": [
+        {
+          "name": "Check Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator/health",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["actuator", "health"]
+            }
+          }
+        },
+        {
+          "name": "Get Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator/metrics",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["actuator", "metrics"]
+            }
+          }
+        },
+        {
+          "name": "Get Prometheus Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/actuator/prometheus",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["actuator", "prometheus"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
